@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="fresangre_model_target_full" size="1.000000 1.777778" />
+    <ImageTarget name="platano_model_target" size="1.000000 1.777778" />
+  </Tracking>
+</QCARConfig>
