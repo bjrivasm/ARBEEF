@@ -519,7 +519,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.33074874, z: 0}
-  m_LocalScale: {x: 0.61630195, y: 0.61630195, z: 0.61630195}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1658794089}
@@ -1140,8 +1140,8 @@ MonoBehaviour:
   mDataSetPath: Vuforia/VuforiaMars_Images.xml
   mAspectRatio: 1.7272727
   mImageTargetType: 0
-  mWidth: 0.06985
-  mHeight: 0.12065
+  mWidth: 1
+  mHeight: 1.7272727
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -1156,7 +1156,7 @@ Transform:
   m_GameObject: {fileID: 1658794085}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.303}
+  m_LocalPosition: {x: -0.35, y: 0.56, z: 121.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
