@@ -1,12 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SimonSays : MonoBehaviour
 {
     int[] secuence = new int[4];
     int playerIndex = 0;
     int lvl = 4;
+    int lastButtonPressed = 0;
     void Start()
     {
     
@@ -77,10 +79,28 @@ public class SimonSays : MonoBehaviour
 
     int ReadKey()
     {
-        if(Keyboard.current.upArrowKey.wasPressedThisFrame) return 1;
-        if (Keyboard.current.leftArrowKey.wasPressedThisFrame) return 2;
-        if (Keyboard.current.rightArrowKey.wasPressedThisFrame) return 3;
-        if (Keyboard.current.downArrowKey.wasPressedThisFrame) return 4;
-        return 0;
+        int value = lastButtonPressed;
+        lastButtonPressed = 0;
+        return value;
     }
+    public void PressUp()
+    {
+        lastButtonPressed = 1;
+    }
+
+    public void PressLeft()
+    {
+        lastButtonPressed = 2;
+    }
+
+    public void PressRight()
+    {
+        lastButtonPressed = 3;
+    }
+
+    public void PressDown()
+    {
+        lastButtonPressed = 4;
+    }
+
 }
