@@ -1049,7 +1049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.46933338, y: 0.29494953}
   m_AnchorMax: {x: 0.46933338, y: 0.29494953}
-  m_AnchoredPosition: {x: 28.062912, y: -433.46005}
+  m_AnchoredPosition: {x: 28.062912, y: -433.46008}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557511905
@@ -1162,8 +1162,8 @@ Transform:
   m_GameObject: {fileID: 785948220}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.33074874, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalPosition: {x: 0, y: 1.54, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1658794089}
@@ -2032,8 +2032,8 @@ MonoBehaviour:
   mDataSetPath: Vuforia/beef.xml
   mAspectRatio: 1.777778
   mImageTargetType: 0
-  mWidth: 1
-  mHeight: 1.777778
+  mWidth: 5.062499
+  mHeight: 9
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -2066,7 +2066,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Vuforia.Unity.Engine.dll::Vuforia.ImageTargetPreview
+  m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1658794088}
   mHiddenRoot: {fileID: 0}
   mTargetName: platano_model_target
