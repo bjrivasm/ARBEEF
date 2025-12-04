@@ -320,7 +320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.71266663, y: 0.43279174}
   m_AnchorMax: {x: 0.71266663, y: 0.43279174}
-  m_AnchoredPosition: {x: -65.43068, y: -532.74005}
+  m_AnchoredPosition: {x: -65.430664, y: -532.74}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &242670187
@@ -366,7 +366,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 242670188}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1153417629}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: PressRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &242670188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,7 +1061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.46933338, y: 0.29494953}
   m_AnchorMax: {x: 0.46933338, y: 0.29494953}
-  m_AnchoredPosition: {x: 28.062912, y: -433.46008}
+  m_AnchoredPosition: {x: 28.062912, y: -433.46005}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557511905
@@ -1095,7 +1107,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 557511906}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1153417629}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: PressDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &557511906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,7 +1289,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 870189307}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1153417629}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: PressUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &870189307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1452,6 +1488,7 @@ GameObject:
   - component: {fileID: 1153417627}
   - component: {fileID: 1153417626}
   - component: {fileID: 1153417625}
+  - component: {fileID: 1153417629}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1546,6 +1583,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1153417629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153417624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c83c872e3b651e4897197639b590638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secuence: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  lvl: 20
+  timeBetweenNumbers: 0.5
 --- !u!1 &1226739248
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,7 +2268,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.21300001, y: 0.43279174}
   m_AnchorMax: {x: 0.21300001, y: 0.43279174}
-  m_AnchoredPosition: {x: 129.17732, y: -532.74005}
+  m_AnchoredPosition: {x: 129.1773, y: -532.74}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2053052599
@@ -2262,7 +2314,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2053052600}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1153417629}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: PressLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2053052600
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class SimonSays : MonoBehaviour
 {
-    int[] secuence = new int[4];
+
+    [SerializeField] private int[] secuence = new int[4];
     int playerIndex = 0;
-    int lvl = 4;
+    [SerializeField] private int lvl = 4;
     int lastButtonPressed = 0;
+    [SerializeField] private float timeBetweenNumbers = .5f;
+
     void Start()
     {
     
@@ -30,7 +33,7 @@ public class SimonSays : MonoBehaviour
             for (int i = 0; i < round; i++)
             {
                 Debug.Log(secuence[i]);
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(timeBetweenNumbers);
             }
 
             playerIndex = 0;
