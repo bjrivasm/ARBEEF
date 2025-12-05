@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AnimationsManager : MonoBehaviour
@@ -37,18 +38,41 @@ public class AnimationsManager : MonoBehaviour
     public enum CharacterID
     {
         PlataNO,
-        Fresangre
+        Fresangre,
+        Kiwi,
+        RacimoUvas,
+        TrozoCarne
     }
 
     public CharacterID currentCharacter;
 
-    [Header("PlataNO animators")]
+
+
+    [Header("PlataNO references")]
     public Animator plataNOBody;
     public Animator plataNOFace;
 
-    [Header("Fresangre animators")]
+    [Header("Fresangre references")]
     public Animator fresangreBody;
     public Animator fresangreFace;
+
+    private void Awake()
+    {
+        //plataNOBody = GameObject.Find("BEEF AR PlataNO").GetComponent<Animator>();
+        //plataNOFace = GameObject.Find("BEEF AR PlataNO face").GetComponent<Animator>();
+        //fresangreBody = GameObject.Find("BEEF AR Fresangre").GetComponent<Animator>();
+        //fresangreFace = GameObject.Find("BEEF AR Fresangre face").GetComponent<Animator>();
+        GetBodyAnimator();
+        GetFaceAnimator();
+    }
+
+    private void Update()
+    {
+        if (fresangreBody.gameObject.activeInHierarchy)
+            currentCharacter = CharacterID.Fresangre;
+        else if (plataNOBody.gameObject.activeInHierarchy)
+            currentCharacter = CharacterID.PlataNO;
+    }
 
     public void PlayIdle()
     {
@@ -188,15 +212,32 @@ public class AnimationsManager : MonoBehaviour
         }
     }
 
-
     public Animator GetBodyAnimator()
     {
-        return currentCharacter == CharacterID.PlataNO ? plataNOBody : fresangreBody;
+        
+        switch (currentCharacter)
+        {
+            case CharacterID.PlataNO:
+                currentCharacter = CharacterID.PlataNO;
+                return plataNOBody;
+            case CharacterID.Fresangre:
+                currentCharacter = CharacterID.Fresangre;
+                return fresangreBody;
+        }
+        return plataNOBody;
     }
 
     public Animator GetFaceAnimator()
     {
-        return currentCharacter == CharacterID.PlataNO ? plataNOFace : fresangreFace;
+
+        switch (currentCharacter)
+        {
+            case CharacterID.PlataNO:
+                return plataNOFace;
+            case CharacterID.Fresangre:
+                return fresangreFace;
+        }
+        return plataNOBody;
     }
 
 }
