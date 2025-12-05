@@ -12,11 +12,13 @@ public class SimonSays : MonoBehaviour
     int lastButtonPressed = 0;
     [SerializeField] private float timeBetweenNumbers = .5f;
 
+    [SerializeField] private AnimationsManager animationsManager;
+
     void Start()
     {
-    
         StartCoroutine(PlaySimonSays());
-        
+        animationsManager.GetBodyAnimator();
+        animationsManager.GetFaceAnimator();
     }
 
     IEnumerator PlaySimonSays()
@@ -33,6 +35,8 @@ public class SimonSays : MonoBehaviour
             for (int i = 0; i < round; i++)
             {
                 Debug.Log(secuence[i]);
+                int direction = secuence[i];
+                StartCoroutine(animationTransition(direction));
                 yield return new WaitForSeconds(timeBetweenNumbers);
             }
 
@@ -57,6 +61,8 @@ public class SimonSays : MonoBehaviour
                         else
                         {
                             Debug.Log("Tonto, asi no era, que eres tonto");
+                            animationsManager.PlayRunning();
+                            animationsManager.PlayExpressions();
                             yield break;
                         }
 
@@ -71,6 +77,8 @@ public class SimonSays : MonoBehaviour
                 if (!recieved)
                 {
                     Debug.Log("Broski hay que ser mas rapido eh!");
+                    animationsManager.PlayRunning();
+                    animationsManager.PlayExpressions();
                     yield break;
                 }
 
@@ -78,6 +86,39 @@ public class SimonSays : MonoBehaviour
             Debug.Log("Pos mu bien");
         }
         Debug.Log("Joder eres weno e");
+        animationsManager.PlayDying();
+        animationsManager.PlayExpressions();
+    }
+
+    private IEnumerator animationTransition(int direction)
+    {
+        switch (direction)
+        {
+            case 1:
+                animationsManager.PlaySimonUp();
+                yield return new WaitForSeconds(timeBetweenNumbers / 2); 
+                animationsManager.PlayIdle();
+                yield return new WaitForSeconds(timeBetweenNumbers / 2);
+                break;
+            case 2:
+                animationsManager.PlaySimonLeft();
+                yield return new WaitForSeconds(timeBetweenNumbers / 2);
+                animationsManager.PlayIdle();
+                yield return new WaitForSeconds(timeBetweenNumbers / 2);
+                break;
+            case 3:
+                animationsManager.PlaySimonRight();
+                yield return new WaitForSeconds(timeBetweenNumbers / 2);
+                animationsManager.PlayIdle();
+                yield return new WaitForSeconds(timeBetweenNumbers / 2);
+                break;
+            case 4:
+                animationsManager.PlaySimonDown();
+                yield return new WaitForSeconds(timeBetweenNumbers / 2);
+                animationsManager.PlayIdle();
+                yield return new WaitForSeconds(timeBetweenNumbers / 2);
+                break;
+        }
     }
 
     int ReadKey()
