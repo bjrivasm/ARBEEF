@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject plataNOButtons;
     [SerializeField] private GameObject fresangreGO;
     [SerializeField] private GameObject fresangreButtons;
+
+    private bool targetIsVisible;
+    private Coroutine speakCoroutine;
     /*[SerializeField] private GameObject racimoUvasGO;
     [SerializeField] private GameObject racimoUvasButtons;
     [SerializeField] private GameObject trozoCarneGO;
@@ -45,11 +48,36 @@ public class GameManager : MonoBehaviour
         DisableButtons();
         animManager.PlayIdle();
         animManager.PlaySpeaking();
+
         yield return new WaitForSeconds(speakingTime);
+
         animManager.PlayEyeblink();
-        simonSaysManager.SetActive(true);
-        EnableButtons();
-        StartCoroutine(simonSays.PlaySimonSays());
+
+        if (!simonSaysManager.activeSelf && targetIsVisible)
+        {
+            simonSaysManager.SetActive(true);
+            EnableButtons();
+            StartCoroutine(simonSays.PlaySimonSays());
+        }
+    }
+
+    public void OnFound()
+    {
+        targetIsVisible = true;
+    }
+
+    public void OnLost()
+    {
+        targetIsVisible = false;
+
+        if (speakCoroutine != null)
+        {
+            StopCoroutine(speakCoroutine);
+            speakCoroutine = null;
+        }
+
+        simonSaysManager.SetActive(false);
+        DisableButtons();
     }
 
     public void DisableButtons()
@@ -66,6 +94,11 @@ public class GameManager : MonoBehaviour
 
     public void StartSpeaking()
     {
-        StartCoroutine(Speak());
+        if (speakCoroutine != null)
+        {
+            StopCoroutine(speakCoroutine);
+        }
+
+        speakCoroutine = StartCoroutine(Speak());
     }
 }

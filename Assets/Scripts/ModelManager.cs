@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
-public class ModelBehaviour : MonoBehaviour
+public class ModelManager : MonoBehaviour
 {
     [SerializeField] private AnimationsManager animManager;
     [SerializeField] private GameManager gameManager;
+
+    [SerializeField] private float timeBetweenModels = 0.5f;
 
     private void Awake()
     {
@@ -39,5 +42,30 @@ public class ModelBehaviour : MonoBehaviour
     public void DisableModel(GameObject obj)
     {
         obj.SetActive(false);
+    }
+
+    public void CallActivateModelTimer(GameObject obj)
+    {
+        StartCoroutine(ActivateModelTimer(obj));
+    }
+
+    public void CallDisableModelTimer(GameObject obj)
+    {
+        StartCoroutine(DisableModelTimer(obj));
+    }
+
+    private IEnumerator DisableModelTimer(GameObject obj)
+    {
+        if(obj.activeSelf)
+        {
+            yield return new WaitForSeconds(timeBetweenModels);
+            obj.SetActive(false);
+        }
+    }
+
+    private IEnumerator ActivateModelTimer(GameObject obj)
+    { 
+        yield return new WaitForSeconds(timeBetweenModels);
+        obj.SetActive(true);
     }
 }
