@@ -59,16 +59,20 @@ public class GameManager : MonoBehaviour
     private IEnumerator Speak()
     {
         GameObject currentCharacterGO = plataNOGO;
+        int difficulty=1;
         if (animManager.currentCharacter == AnimationsManager.CharacterID.PlataNO)
         {
             currentCharacterGO = plataNOGO;
+            difficulty = 1;
         }else if (animManager.currentCharacter == AnimationsManager.CharacterID.Fresangre)
         {
             currentCharacterGO = fresangreGO;
+            difficulty = 2;
         }
         else if (animManager.currentCharacter == AnimationsManager.CharacterID.TrozoCarne)
         {
             //GameObject currentCharacter = TrozoCarneGO;
+            difficulty = 3;
         }
             DisableButtons();
         animManager.PlayIdle();
@@ -82,7 +86,7 @@ public class GameManager : MonoBehaviour
         {
             simonSaysManager.SetActive(true);
             EnableButtons();
-            StartCoroutine(simonSays.PlaySimonSays(currentCharacterGO));
+            StartCoroutine(simonSays.PlaySimonSays(currentCharacterGO, difficulty));
         }
     }
 

@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -6,9 +8,8 @@ using UnityEngine.UI;
 public class SimonSays : MonoBehaviour
 {
 
-    [SerializeField] private int[] secuence = new int[4];
+    List<int> secuence = new List<int>();
     int playerIndex = 0;
-    [SerializeField] private int lvl = 4;
     int lastButtonPressed = 0;
     [SerializeField] private float timeBetweenNumbers = 2f;
 
@@ -22,15 +23,27 @@ public class SimonSays : MonoBehaviour
         // animManager = GameObject.Find("AnimationsManager").GetComponent<AnimationsManager>();
     }
 
-    public IEnumerator PlaySimonSays(GameObject enemy)
+    public IEnumerator PlaySimonSays(GameObject enemy, int difficulty)
     {
-        enemy.SetActive(true);
-        for (int i = 0; i < secuence.Length; i++)
+        int range=4;
+        if (difficulty == 1)
         {
-            secuence[i] = Random.Range(1 , 4 + 1);
+            range = 4;
+        }
+        else if (difficulty == 2)
+        {
+            range = 6;
+        }else if (difficulty == 3)
+        {
+            range = 10;
+        }
+            enemy.SetActive(true);
+        for (int i = 0; i < range; i++)
+        {
+            secuence.Add(Random.Range(1, 4 + 1));
         }
 
-        for (int round = 1; round <= lvl; round++)
+        for (int round = 1; round <= range; round++)
         {
             for (int i = 0; i < round; i++)
             {
