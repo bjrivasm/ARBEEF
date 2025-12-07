@@ -101,4 +101,51 @@ public class GameManager : MonoBehaviour
 
         speakCoroutine = StartCoroutine(Speak());
     }
+
+    public IEnumerator RunAwayRandom()
+    {
+        Transform characterRig = null;
+
+        if (plataNOGO.activeInHierarchy && animManager.currentCharacter == AnimationsManager.CharacterID.PlataNO)
+            characterRig = animManager.plataNOBody.transform;
+        else if (fresangreGO.activeInHierarchy && animManager.currentCharacter == AnimationsManager.CharacterID.Fresangre)
+            characterRig = animManager.fresangreBody.transform;
+        else
+        {
+            Debug.LogWarning("No hay rig activo para RunAwayRandom");
+            yield break;
+        }
+
+        float speed = 3f;
+        float rotateSpeed = 5f;
+        float duration = 2f;
+
+        Vector3 randomDir = new Vector3(
+            Random.Range(-1f, 1f),
+            0f,
+            Random.Range(-1f, 1f)
+        ).normalized;
+
+        Quaternion targetRot = Quaternion.LookRotation(randomDir);
+
+        animManager.PlayRunning();
+        animManager.PlayExpressions();
+        DisableButtons();
+
+        while (Quaternion.Angle(characterRig.rotation, targetRot) > 1f)
+        {
+            characterRig.rotation = Quaternion.Slerp(characterRig.rotation, targetRot, rotateSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        float t = 0f;
+        while (t < duration)
+        {
+            characterRig.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        animManager.PlayIdle();
+    }
 }

@@ -46,6 +46,7 @@ public class AnimationsManager : MonoBehaviour
 
     public CharacterID currentCharacter;
 
+    [SerializeField] private GameObject currentCharacterRigGO;
 
 
     [Header("PlataNO references")]
@@ -219,6 +220,7 @@ public class AnimationsManager : MonoBehaviour
         {
             case CharacterID.PlataNO:
                 currentCharacter = CharacterID.PlataNO;
+
                 return plataNOBody;
             case CharacterID.Fresangre:
                 currentCharacter = CharacterID.Fresangre;

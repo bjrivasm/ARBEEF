@@ -59,9 +59,7 @@ public class SimonSays : MonoBehaviour
                         else
                         {
                             Debug.Log("Tonto, asi no era, que eres tonto");
-                            animManager.PlayRunning();
-                            animManager.PlayExpressions();
-                            gameManager.DisableButtons();
+                            gameManager.StartCoroutine(gameManager.RunAwayRandom());
                             yield break;
                         }
                     }
@@ -71,9 +69,7 @@ public class SimonSays : MonoBehaviour
                 if (!recieved)
                 {
                     Debug.Log("Broski hay que ser mas rapido eh!");
-                    animManager.PlayRunning();
-                    animManager.PlayExpressions();
-                    gameManager.DisableButtons();
+                    gameManager.StartCoroutine(gameManager.RunAwayRandom());
                     yield break;
                 }
 
