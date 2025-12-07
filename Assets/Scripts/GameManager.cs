@@ -58,7 +58,19 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Speak()
     {
-        DisableButtons();
+        GameObject currentCharacterGO = plataNOGO;
+        if (animManager.currentCharacter == AnimationsManager.CharacterID.PlataNO)
+        {
+            currentCharacterGO = plataNOGO;
+        }else if (animManager.currentCharacter == AnimationsManager.CharacterID.Fresangre)
+        {
+            currentCharacterGO = fresangreGO;
+        }
+        else if (animManager.currentCharacter == AnimationsManager.CharacterID.TrozoCarne)
+        {
+            //GameObject currentCharacter = TrozoCarneGO;
+        }
+            DisableButtons();
         animManager.PlayIdle();
         animManager.PlaySpeaking();
 
@@ -70,7 +82,7 @@ public class GameManager : MonoBehaviour
         {
             simonSaysManager.SetActive(true);
             EnableButtons();
-            StartCoroutine(simonSays.PlaySimonSays());
+            StartCoroutine(simonSays.PlaySimonSays(currentCharacterGO));
         }
     }
 

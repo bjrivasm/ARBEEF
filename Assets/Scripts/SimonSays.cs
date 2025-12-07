@@ -16,13 +16,15 @@ public class SimonSays : MonoBehaviour
 
     [SerializeField] GameManager gameManager;
 
+
     void Start()
     {
         // animManager = GameObject.Find("AnimationsManager").GetComponent<AnimationsManager>();
     }
 
-    public IEnumerator PlaySimonSays()
+    public IEnumerator PlaySimonSays(GameObject enemy)
     {
+        enemy.SetActive(true);
         for (int i = 0; i < secuence.Length; i++)
         {
             secuence[i] = Random.Range(1 , 4 + 1);
@@ -80,6 +82,8 @@ public class SimonSays : MonoBehaviour
         animManager.PlayDying();
         animManager.PlayExpressions();
         gameManager.DisableButtons();
+        yield return new WaitForSeconds(8);
+        enemy.SetActive(false);
         yield break;
     }
 
