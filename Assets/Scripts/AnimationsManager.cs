@@ -88,8 +88,8 @@ public class AnimationsManager : MonoBehaviour
         //plataNOFace = GameObject.Find("BEEF AR PlataNO face").GetComponent<Animator>();
         //fresangreBody = GameObject.Find("BEEF AR Fresangre").GetComponent<Animator>();
         //fresangreFace = GameObject.Find("BEEF AR Fresangre face").GetComponent<Animator>();
-        GetBodyAnimator();
-        GetFaceAnimator();
+        //GetBodyAnimator();
+        //GetFaceAnimator();
     }
 
     private void Update()
@@ -121,6 +121,7 @@ public class AnimationsManager : MonoBehaviour
 
         }
     }
+
     public void PlayDying()
     {
         switch (currentCharacter)

@@ -10,7 +10,6 @@ public class SimonSays : MonoBehaviour
 
     List<int> secuence = new List<int>();
     int playerIndex = 0;
-    [SerializeField] private int lvl = 4;
     int lastButtonPressed = 0;
     [SerializeField] private float timeBetweenNumbers = 2f;
 
@@ -36,17 +35,18 @@ public class SimonSays : MonoBehaviour
         {
             range = 6;
         }
-        if (difficulty == 3)
+        else if (difficulty == 3)
         {
             range = 10;
         }
+
         for (int i = 0; i < range; i++)
         {
 
             secuence.Add(Random.Range(1, 4 + 1));
         }
 
-        for (int round = 1; round <= lvl; round++)
+        for (int round = 1; round <= range; round++)
         {
             for (int i = 0; i < round; i++)
             {

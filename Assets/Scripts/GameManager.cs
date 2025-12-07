@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     private bool targetIsVisible;
     private Coroutine speakCoroutine;
     private Coroutine runAwayCoroutine;
+    private Coroutine simonSaysCoroutine;
     /*[SerializeField] private GameObject racimoUvasGO;
     [SerializeField] private GameObject racimoUvasButtons;
     [SerializeField] private GameObject trozoCarneGO;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
 
         plataNOButtons.SetActive(false);
         fresangreButtons.SetActive(false);
+        trozoCarneButtons.SetActive(false);
 
         plataNOGO.SetActive(false);
         fresangreGO.SetActive(false);
@@ -90,16 +92,16 @@ public class GameManager : MonoBehaviour
         if (animManager.currentCharacter == AnimationsManager.CharacterID.PlataNO || animManager.currentCharacter == AnimationsManager.CharacterID.Fresangre)
         {
             animManager.PlaySpeaking();
-            yield return new WaitForSeconds(speakingTime);
             animManager.PlayEyeblink();
         }
 
+        yield return new WaitForSeconds(speakingTime);
 
         if (!simonSaysManager.activeSelf && targetIsVisible)
         {
             simonSaysManager.SetActive(true);
             EnableButtons();
-            StartCoroutine(simonSays.PlaySimonSays(currentCharacterGO, difficulty));
+            simonSaysCoroutine = StartCoroutine(simonSays.PlaySimonSays(currentCharacterGO, difficulty));
         }
     }
 
@@ -136,6 +138,12 @@ public class GameManager : MonoBehaviour
             runAwayCoroutine = null;
         }
 
+        if (simonSaysCoroutine != null)
+        {
+            StopCoroutine(simonSaysCoroutine);
+            simonSaysCoroutine = null;
+        }
+
         simonSaysManager.SetActive(false);
         DisableButtons();
     }
@@ -144,12 +152,14 @@ public class GameManager : MonoBehaviour
     {
         plataNOButtons.SetActive(false);
         fresangreButtons.SetActive(false);
+        trozoCarneButtons.SetActive(false);
     }
 
     public void EnableButtons()
     {
         plataNOButtons.SetActive(true);
         fresangreButtons.SetActive(true);
+        trozoCarneButtons.SetActive(true);
     }
 
     public void StartSpeaking()
