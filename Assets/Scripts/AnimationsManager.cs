@@ -35,6 +35,27 @@ public class AnimationsManager : MonoBehaviour
     public const string PlataNO_simon_right = "rig_PlataNO-simon-right";
     public const string PlataNO_simon_up = "rig_PlataNO-simon-up";
 
+    // TrozoCarne hands
+    public const string Skeleton_TrozoCarne_hands_dying = "Skeleton_TrozoCarne-hands-dying";
+    public const string Skeleton_TrozoCarne_hands_idle = "Skeleton_TrozoCarne-hands-idle";
+    public const string Skeleton_TrozoCarne_hands_keying = "Skeleton_TrozoCarne-hands-keying";
+    public const string Skeleton_TrozoCarne_hands_running = "Skeleton_TrozoCarne-hands-running";
+    public const string Skeleton_TrozoCarne_hands_simon_down = "Skeleton_TrozoCarne-hands-simon-down";
+    public const string Skeleton_TrozoCarne_hands_simon_left = "Skeleton_TrozoCarne-hands-simon-left";
+    public const string Skeleton_TrozoCarne_hands_simon_right = "Skeleton_TrozoCarne-hands-simon-right";
+    public const string Skeleton_TrozoCarne_hands_simon_up = "Skeleton_TrozoCarne-hands-simon-up";
+
+    // TrozoCarne
+    public const string TrozoCarne_dying = "rig_TrozoCarne-dying";
+    public const string TrozoCarne_idle = "rig_TrozoCarne-idle";
+    public const string TrozoCarne_keying_running = "rig_TrozoCarne-keying-running";
+    public const string TrozoCarne_simon_down = "rig_TrozoCarne-simon-down";
+    public const string TrozoCarne_simon_left = "rig_TrozoCarne-simon-left";
+    public const string TrozoCarne_simon_right = "rig_TrozoCarne-simon-right";
+    public const string TrozoCarne_simon_up = "rig_TrozoCarne-simon-up";
+
+
+
     public enum CharacterID
     {
         PlataNO,
@@ -57,6 +78,10 @@ public class AnimationsManager : MonoBehaviour
     public Animator fresangreBody;
     public Animator fresangreFace;
 
+    [Header("TrozoCarne references")]
+    public Animator trozoCarneBody;
+    public Animator trozoCarneHands;
+
     private void Awake()
     {
         //plataNOBody = GameObject.Find("BEEF AR PlataNO").GetComponent<Animator>();
@@ -73,6 +98,8 @@ public class AnimationsManager : MonoBehaviour
             currentCharacter = CharacterID.Fresangre;
         else if (plataNOBody.gameObject.activeInHierarchy)
             currentCharacter = CharacterID.PlataNO;
+        else if (trozoCarneBody.gameObject.activeInHierarchy)
+            currentCharacter = CharacterID.TrozoCarne;
     }
 
     public void PlayIdle()
@@ -86,6 +113,12 @@ public class AnimationsManager : MonoBehaviour
             case CharacterID.Fresangre:
                 fresangreBody.SetBool("boolAnimDirection", false);
                 break;
+
+            case CharacterID.TrozoCarne:
+                trozoCarneBody.SetBool("boolAnimDirection", false);
+                trozoCarneHands.SetBool("boolAnimDirection", false);
+                break;
+
         }
     }
     public void PlayDying()
@@ -97,6 +130,10 @@ public class AnimationsManager : MonoBehaviour
                 break;
             case CharacterID.Fresangre:
                 fresangreBody.SetTrigger("isDying");
+                break;
+            case CharacterID.TrozoCarne:
+                trozoCarneBody.SetTrigger("isDying");
+                trozoCarneHands.SetTrigger("isDying");
                 break;
         }
     }
@@ -111,6 +148,10 @@ public class AnimationsManager : MonoBehaviour
             case CharacterID.Fresangre:
                 fresangreBody.SetBool("isRunning", true);
                 break;
+            case CharacterID.TrozoCarne:
+                trozoCarneBody.SetBool("isRunning", true);
+                trozoCarneHands.SetBool("isRunning", true);
+                break;
         }
     }
     public void StopRunning()
@@ -122,6 +163,10 @@ public class AnimationsManager : MonoBehaviour
                 break;
             case CharacterID.Fresangre:
                 fresangreBody.SetBool("isRunning", false);
+                break;
+            case CharacterID.TrozoCarne:
+                trozoCarneBody.SetBool("isRunning", false);
+                trozoCarneHands.SetBool("isRunning", false);
                 break;
         }
     }
@@ -138,6 +183,12 @@ public class AnimationsManager : MonoBehaviour
                 fresangreBody.SetInteger("direction", 1);
                 fresangreBody.SetBool("boolAnimDirection", true);
                 break;
+            case CharacterID.TrozoCarne:
+                trozoCarneBody.SetInteger("direction", 1);
+                trozoCarneHands.SetInteger("direction", 1);
+                trozoCarneBody.SetBool("boolAnimDirection", true);
+                trozoCarneHands.SetBool("boolAnimDirection", true);
+                break;
         }
     }
 
@@ -152,6 +203,12 @@ public class AnimationsManager : MonoBehaviour
             case CharacterID.Fresangre:
                 fresangreBody.SetInteger("direction", 2);
                 fresangreBody.SetBool("boolAnimDirection", true);
+                break;
+            case CharacterID.TrozoCarne:
+                trozoCarneBody.SetInteger("direction", 2);
+                trozoCarneHands.SetInteger("direction", 2);
+                trozoCarneBody.SetBool("boolAnimDirection", true);
+                trozoCarneHands.SetBool("boolAnimDirection", true);
                 break;
         }
     }
@@ -168,6 +225,12 @@ public class AnimationsManager : MonoBehaviour
                 fresangreBody.SetInteger("direction", 3);
                 fresangreBody.SetBool("boolAnimDirection", true);
                 break;
+            case CharacterID.TrozoCarne:
+                trozoCarneBody.SetInteger("direction", 3);
+                trozoCarneHands.SetInteger("direction", 3);
+                trozoCarneBody.SetBool("boolAnimDirection", true);
+                trozoCarneHands.SetBool("boolAnimDirection", true);
+                break;
         }
     }
 
@@ -182,6 +245,12 @@ public class AnimationsManager : MonoBehaviour
             case CharacterID.Fresangre:
                 fresangreBody.SetInteger("direction", 4);
                 fresangreBody.SetBool("boolAnimDirection", true);
+                break;
+            case CharacterID.TrozoCarne:
+                trozoCarneBody.SetInteger("direction", 4);
+                trozoCarneHands.SetInteger("direction", 4);
+                trozoCarneBody.SetBool("boolAnimDirection", true);
+                trozoCarneHands.SetBool("boolAnimDirection", true);
                 break;
         }
     }
@@ -232,11 +301,13 @@ public class AnimationsManager : MonoBehaviour
         {
             case CharacterID.PlataNO:
                 currentCharacter = CharacterID.PlataNO;
-
                 return plataNOBody;
             case CharacterID.Fresangre:
                 currentCharacter = CharacterID.Fresangre;
                 return fresangreBody;
+            case CharacterID.TrozoCarne:
+                currentCharacter = CharacterID.TrozoCarne;
+                return trozoCarneBody;
         }
         return plataNOBody;
     }
@@ -250,6 +321,8 @@ public class AnimationsManager : MonoBehaviour
                 return plataNOFace;
             case CharacterID.Fresangre:
                 return fresangreFace;
+            case CharacterID.TrozoCarne:
+                return trozoCarneHands;
         }
         return plataNOBody;
     }

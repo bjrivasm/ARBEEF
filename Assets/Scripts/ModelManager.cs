@@ -24,6 +24,10 @@ public class ModelManager : MonoBehaviour
         {
             animManager.currentCharacter = AnimationsManager.CharacterID.PlataNO;
         }
+        else if (animManager.trozoCarneBody.gameObject.activeInHierarchy)
+        {
+            animManager.currentCharacter = AnimationsManager.CharacterID.TrozoCarne;
+        }
         gameManager.StartSpeaking();
         /*else if (animManager.kiwiBody.gameoBject.activeInHierarchy)
         {
@@ -74,6 +78,10 @@ public class ModelManager : MonoBehaviour
         else if (animManager.plataNOBody.gameObject.activeInHierarchy)
         {
             animManager.currentCharacter = AnimationsManager.CharacterID.PlataNO;
+        }
+        else if (animManager.trozoCarneBody.gameObject.activeInHierarchy)
+        {
+            animManager.currentCharacter = AnimationsManager.CharacterID.TrozoCarne;
         }
         gameManager.StartSpeaking();
     }

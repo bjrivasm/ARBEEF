@@ -13,12 +13,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject plataNOButtons;
     [SerializeField] private GameObject fresangreGO;
     [SerializeField] private GameObject fresangreButtons;
+    [SerializeField] private GameObject trozoCarneGO;
+    [SerializeField] private GameObject trozoCarneButtons;
 
     private Vector3 plataNOInitialPos;
     private Quaternion plataNOInitialRot;
 
     private Vector3 fresangreInitialPos;
     private Quaternion fresangreInitialRot;
+
+    private Vector3 trozoCarneInitialPos;
+    private Quaternion trozoCarneInitialRot;
 
     private bool targetIsVisible;
     private Coroutine speakCoroutine;
@@ -44,11 +49,15 @@ public class GameManager : MonoBehaviour
         fresangreInitialPos = fresangreGO.transform.localPosition;
         fresangreInitialRot = fresangreGO.transform.localRotation;
 
+        trozoCarneInitialPos = trozoCarneGO.transform.localPosition;
+        trozoCarneInitialRot = trozoCarneGO.transform.localRotation;
+
         plataNOButtons.SetActive(false);
         fresangreButtons.SetActive(false);
 
         plataNOGO.SetActive(false);
         fresangreGO.SetActive(false);
+        trozoCarneGO.SetActive(false);
 
         // simonSaysManager = GameObject.Find("SimonSaysManager");
         // simonSays = simonSaysManager.GetComponent<SimonSays>();
@@ -62,21 +71,25 @@ public class GameManager : MonoBehaviour
         if (animManager.currentCharacter == AnimationsManager.CharacterID.PlataNO)
         {
             currentCharacterGO = plataNOGO;
-        }else if (animManager.currentCharacter == AnimationsManager.CharacterID.Fresangre)
+        }
+        else if (animManager.currentCharacter == AnimationsManager.CharacterID.Fresangre)
         {
             currentCharacterGO = fresangreGO;
         }
         else if (animManager.currentCharacter == AnimationsManager.CharacterID.TrozoCarne)
         {
-            //GameObject currentCharacter = TrozoCarneGO;
+            currentCharacterGO = trozoCarneGO;
         }
-            DisableButtons();
+
+        DisableButtons();
         animManager.PlayIdle();
-        animManager.PlaySpeaking();
+        if (animManager.currentCharacter == AnimationsManager.CharacterID.PlataNO || animManager.currentCharacter == AnimationsManager.CharacterID.Fresangre)
+        {
+            animManager.PlaySpeaking();
+            yield return new WaitForSeconds(speakingTime);
+            animManager.PlayEyeblink();
+        }
 
-        yield return new WaitForSeconds(speakingTime);
-
-        animManager.PlayEyeblink();
 
         if (!simonSaysManager.activeSelf && targetIsVisible)
         {
@@ -96,6 +109,9 @@ public class GameManager : MonoBehaviour
         // Reset Fresangre
         fresangreGO.transform.localPosition = fresangreInitialPos;
         fresangreGO.transform.localRotation = fresangreInitialRot;
+
+        trozoCarneGO.transform.localPosition = trozoCarneInitialPos;
+        trozoCarneGO.transform.localRotation = trozoCarneInitialRot;
 
         animManager.PlayIdle(); // Opcional, para evitar que siga corriendo
     }
@@ -161,6 +177,8 @@ public class GameManager : MonoBehaviour
             characterRig = animManager.plataNOBody.transform;
         else if (fresangreGO.activeInHierarchy && animManager.currentCharacter == AnimationsManager.CharacterID.Fresangre)
             characterRig = animManager.fresangreBody.transform;
+        else if (trozoCarneGO.activeInHierarchy && animManager.currentCharacter == AnimationsManager.CharacterID.TrozoCarne)
+            characterRig = animManager.trozoCarneBody.transform;
         else
         {
             Debug.LogWarning("No hay rig activo para RunAwayRandom");
