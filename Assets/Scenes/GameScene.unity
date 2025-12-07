@@ -2188,6 +2188,10 @@ PrefabInstance:
       propertyPath: fresangreButtons
       value: 
       objectReference: {fileID: 2938411624741647564}
+    - target: {fileID: 5602271124117097724, guid: 8890b94a63065254a9e76e6e4c621f51, type: 3}
+      propertyPath: iOS_ID
+      value: 5995520
+      objectReference: {fileID: 0}
     - target: {fileID: 6752904830528634022, guid: 8890b94a63065254a9e76e6e4c621f51, type: 3}
       propertyPath: m_Name
       value: Managers
