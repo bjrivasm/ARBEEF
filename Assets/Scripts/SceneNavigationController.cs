@@ -7,7 +7,6 @@ public class SceneNavigationController : MonoBehaviour
     {
         int index = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(index + 1);
-        AdManager.instance.ShowAd();
     }
 
     public void OnClickExit()
