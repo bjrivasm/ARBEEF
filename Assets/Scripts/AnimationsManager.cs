@@ -106,10 +106,22 @@ public class AnimationsManager : MonoBehaviour
         switch (currentCharacter)
         {
             case CharacterID.PlataNO:
-                plataNOBody.SetTrigger("isRunning");
+                plataNOBody.SetBool("isRunning", true);
                 break;
             case CharacterID.Fresangre:
-                fresangreBody.SetTrigger("isRunning");
+                fresangreBody.SetBool("isRunning", true);
+                break;
+        }
+    }
+    public void StopRunning()
+    {
+        switch (currentCharacter)
+        {
+            case CharacterID.PlataNO:
+                plataNOBody.SetBool("isRunning", false);
+                break;
+            case CharacterID.Fresangre:
+                fresangreBody.SetBool("isRunning", false);
                 break;
         }
     }

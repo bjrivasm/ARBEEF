@@ -284,6 +284,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &43638166 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2077942569790154525, guid: 81c36ad9b59c1784c9f6e3492c7a4329, type: 3}
+  m_PrefabInstance: {fileID: 1364527007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &49326647 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5009105868885354083, guid: 2c157377c1b5ca943b3c3e15da327c87, type: 3}
@@ -1496,6 +1501,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 262482955}
     m_Modifications:
+    - target: {fileID: 2077942569790154525, guid: 81c36ad9b59c1784c9f6e3492c7a4329, type: 3}
+      propertyPath: m_Name
+      value: rig
+      objectReference: {fileID: 0}
     - target: {fileID: 2614131871367999634, guid: 81c36ad9b59c1784c9f6e3492c7a4329, type: 3}
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1679,6 +1688,11 @@ MonoBehaviour:
         m_CallState: 2
   scaleDownTimer: 0.4
   scaleFactor: 1.2
+--- !u!1 &1576566987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5845171011285280239, guid: 2c157377c1b5ca943b3c3e15da327c87, type: 3}
+  m_PrefabInstance: {fileID: 1986578328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1658794085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,6 +1963,10 @@ PrefabInstance:
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 370005709}
+    - target: {fileID: 5845171011285280239, guid: 2c157377c1b5ca943b3c3e15da327c87, type: 3}
+      propertyPath: m_Name
+      value: rig
+      objectReference: {fileID: 0}
     - target: {fileID: 7425478458590002261, guid: 2c157377c1b5ca943b3c3e15da327c87, type: 3}
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2169,6 +2187,22 @@ PrefabInstance:
       propertyPath: fresangreGO
       value: 
       objectReference: {fileID: 826111638}
+    - target: {fileID: 5315754763748131381, guid: 8890b94a63065254a9e76e6e4c621f51, type: 3}
+      propertyPath: plataNOBody
+      value: 
+      objectReference: {fileID: 1965848678}
+    - target: {fileID: 5315754763748131381, guid: 8890b94a63065254a9e76e6e4c621f51, type: 3}
+      propertyPath: plataNORigGO
+      value: 
+      objectReference: {fileID: 1576566987}
+    - target: {fileID: 5315754763748131381, guid: 8890b94a63065254a9e76e6e4c621f51, type: 3}
+      propertyPath: fresangreBody
+      value: 
+      objectReference: {fileID: 1364527008}
+    - target: {fileID: 5315754763748131381, guid: 8890b94a63065254a9e76e6e4c621f51, type: 3}
+      propertyPath: fresangreRigGO
+      value: 
+      objectReference: {fileID: 43638166}
     - target: {fileID: 5315754763748131381, guid: 8890b94a63065254a9e76e6e4c621f51, type: 3}
       propertyPath: plataNOButtons
       value: 

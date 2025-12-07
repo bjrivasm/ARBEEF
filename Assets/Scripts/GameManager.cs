@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject fresangreGO;
     [SerializeField] private GameObject fresangreButtons;
 
+    private Vector3 plataNOInitialPos;
+    private Quaternion plataNOInitialRot;
+
+    private Vector3 fresangreInitialPos;
+    private Quaternion fresangreInitialRot;
+
     private bool targetIsVisible;
     private Coroutine speakCoroutine;
     /*[SerializeField] private GameObject racimoUvasGO;
@@ -30,6 +36,12 @@ public class GameManager : MonoBehaviour
         //plataNOButtons = GameObject.Find("PlataNO 3D Buttons");
         //fresangreGO = GameObject.Find("BEEF AR Fresangre");
         //fresangreButtons = GameObject.Find("Fresangre 3D Buttons");
+
+        plataNOInitialPos = plataNOGO.transform.localPosition;
+        plataNOInitialRot = plataNOGO.transform.localRotation;
+
+        fresangreInitialPos = fresangreGO.transform.localPosition;
+        fresangreInitialRot = fresangreGO.transform.localRotation;
 
         plataNOButtons.SetActive(false);
         fresangreButtons.SetActive(false);
@@ -64,6 +76,15 @@ public class GameManager : MonoBehaviour
     public void OnFound()
     {
         targetIsVisible = true;
+
+        plataNOGO.transform.localPosition = plataNOInitialPos;
+        plataNOGO.transform.localRotation = plataNOInitialRot;
+
+        // Reset Fresangre
+        fresangreGO.transform.localPosition = fresangreInitialPos;
+        fresangreGO.transform.localRotation = fresangreInitialRot;
+
+        animManager.PlayIdle(); // Opcional, para evitar que siga corriendo
     }
 
     public void OnLost()
@@ -118,7 +139,7 @@ public class GameManager : MonoBehaviour
 
         float speed = 3f;
         float rotateSpeed = 5f;
-        float duration = 2f;
+        float duration = 6f;
 
         Vector3 randomDir = new Vector3(
             Random.Range(-1f, 1f),
@@ -141,11 +162,12 @@ public class GameManager : MonoBehaviour
         float t = 0f;
         while (t < duration)
         {
-            characterRig.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
+            characterRig.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
             t += Time.deltaTime;
             yield return null;
         }
 
         animManager.PlayIdle();
     }
+
 }
