@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     private bool targetIsVisible;
     private Coroutine speakCoroutine;
+    private Coroutine runAwayCoroutine;
     /*[SerializeField] private GameObject racimoUvasGO;
     [SerializeField] private GameObject racimoUvasButtons;
     [SerializeField] private GameObject trozoCarneGO;
@@ -97,6 +98,12 @@ public class GameManager : MonoBehaviour
             speakCoroutine = null;
         }
 
+        if (runAwayCoroutine != null)
+        {
+            StopCoroutine(runAwayCoroutine);
+            runAwayCoroutine = null;
+        }
+
         simonSaysManager.SetActive(false);
         DisableButtons();
     }
@@ -121,6 +128,17 @@ public class GameManager : MonoBehaviour
         }
 
         speakCoroutine = StartCoroutine(Speak());
+    }
+
+    public void StartRunAway()
+    {
+        if (runAwayCoroutine != null)
+        {
+            StopCoroutine(runAwayCoroutine);
+            runAwayCoroutine = null;
+        }
+
+        runAwayCoroutine = StartCoroutine(RunAwayRandom());
     }
 
     public IEnumerator RunAwayRandom()
@@ -149,7 +167,6 @@ public class GameManager : MonoBehaviour
 
         Quaternion targetRot = Quaternion.LookRotation(randomDir);
 
-        animManager.PlayRunning();
         animManager.PlayExpressions();
         DisableButtons();
 
@@ -158,6 +175,8 @@ public class GameManager : MonoBehaviour
             characterRig.rotation = Quaternion.Slerp(characterRig.rotation, targetRot, rotateSpeed * Time.deltaTime);
             yield return null;
         }
+
+        animManager.PlayRunning();
 
         float t = 0f;
         while (t < duration)
