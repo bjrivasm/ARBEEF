@@ -29,7 +29,7 @@ public class SceneNavigationController : MonoBehaviour
         SceneManager.LoadScene(escenaActual - 1);
     }
 
-    IEnumerator ScaleButton(Transform button, System.Action callback)
+    private IEnumerator ScaleButton(Transform button, System.Action callback)
     {
         pressed = true;
         Vector3 original = button.localScale;

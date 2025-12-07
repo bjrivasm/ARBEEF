@@ -67,5 +67,14 @@ public class ModelManager : MonoBehaviour
     { 
         yield return new WaitForSeconds(timeBetweenModels);
         obj.SetActive(true);
+        if (animManager.fresangreBody.gameObject.activeInHierarchy)
+        {
+            animManager.currentCharacter = AnimationsManager.CharacterID.Fresangre;
+        }
+        else if (animManager.plataNOBody.gameObject.activeInHierarchy)
+        {
+            animManager.currentCharacter = AnimationsManager.CharacterID.PlataNO;
+        }
+        gameManager.StartSpeaking();
     }
 }
