@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class AdManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
     [SerializeField] private string iOS_ID;
     [SerializeField] private bool testMode;
     private string placementID = "Interstitial_";
+
+    private Action _onAdClosed;
 
     private void Awake()
     {
@@ -36,8 +39,9 @@ public class AdManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
     }
 
     // Método para usar en otros scripts cuando queremos mostrar un anuncio
-    public void ShowAd()
+    public void ShowAd(System.Action onAdClosed = null)
     {
+        _onAdClosed = onAdClosed;
         Advertisement.Load(placementID, this);
     }
 
@@ -49,12 +53,14 @@ public class AdManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
         Debug.Log("El anuncio no se ha podido cargar");
+        _onAdClosed?.Invoke();
     }
 
     // Implementación de la interfaz de IUnityAdsShowListener
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
         Debug.Log("El anuncio ha fallado al mostrarse");
+        _onAdClosed?.Invoke();
     }
     public void OnUnityAdsShowStart(string placementId)
     {
@@ -67,6 +73,8 @@ public class AdManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
         Debug.Log("El anuncio se ha completado");
+        _onAdClosed?.Invoke();
+        _onAdClosed = null;
     }
 
     // Implementación de la interfaz de IUnityAdsInitializationListener
