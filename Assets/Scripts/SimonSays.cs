@@ -15,6 +15,8 @@ public class SimonSays : MonoBehaviour
 
     [SerializeField] private AnimationsManager animManager;
 
+    [SerializeField] private AudioManager audioManager;
+
     [SerializeField] GameManager gameManager;
 
 
@@ -109,24 +111,28 @@ public class SimonSays : MonoBehaviour
         {
             case 1:
                 animManager.PlaySimonUp();
+                audioManager.PlaySimonUpSFX();
                 yield return new WaitForSeconds(timeBetweenNumbers / 2); 
                 animManager.PlayIdle();
                 yield return new WaitForSeconds(timeBetweenNumbers / 2);
                 break;
             case 2:
                 animManager.PlaySimonLeft();
+                audioManager.PlaySimonLeftSFX();
                 yield return new WaitForSeconds(timeBetweenNumbers / 2);
                 animManager.PlayIdle();
                 yield return new WaitForSeconds(timeBetweenNumbers / 2);
                 break;
             case 3:
                 animManager.PlaySimonRight();
+                audioManager.PlaySimonRightSFX();
                 yield return new WaitForSeconds(timeBetweenNumbers / 2);
                 animManager.PlayIdle();
                 yield return new WaitForSeconds(timeBetweenNumbers / 2);
                 break;
             case 4:
                 animManager.PlaySimonDown();
+                audioManager.PlaySimonDownSFX();
                 yield return new WaitForSeconds(timeBetweenNumbers / 2);
                 animManager.PlayIdle();
                 yield return new WaitForSeconds(timeBetweenNumbers / 2);

@@ -92,10 +92,9 @@ public class GameManager : MonoBehaviour
         if (animManager.currentCharacter == AnimationsManager.CharacterID.PlataNO || animManager.currentCharacter == AnimationsManager.CharacterID.Fresangre)
         {
             animManager.PlaySpeaking();
+            yield return new WaitForSeconds(speakingTime);
             animManager.PlayEyeblink();
         }
-
-        yield return new WaitForSeconds(speakingTime);
 
         if (!simonSaysManager.activeSelf && targetIsVisible)
         {
